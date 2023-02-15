@@ -36,3 +36,26 @@ output: 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23
 Что оценивается
 Размер вектора не превышает 20 элементов.
 Нет изменений в размере вектора (это выполняется, если вы выбрали верный алгоритм решения).*/
+
+#include <iostream>
+#include <vector>
+
+int main()
+{
+	std::vector<int> circularBuffer(20);
+
+
+	std::cout << "Input number: ";
+	int inputNumber = 0;
+	std::cin >> inputNumber;
+
+	int n = 0;
+	for (int i = 0; i < 100; ++i)
+	{
+		n = (n + 1) % 20;
+		std::cout << n << std::endl;
+	}
+
+	
+
+}
