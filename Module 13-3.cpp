@@ -54,7 +54,12 @@ int main()
 		std::cout << "Input number: ";
 		std::cin >> inputNumber;
 		if (inputNumber == -1) {
-
+			int count = lengthBuffer;
+			for (int i = headBuffer; count > 0; i = ++i % 20) {
+				std::cout << circularBuffer[i] << " ";
+				--count;
+			}
+			std::cout << std::endl;
 		}
 		else {
 			circularBuffer[headBuffer] = inputNumber;
@@ -62,9 +67,7 @@ int main()
 			if (lengthBuffer < 20) {
 				++lengthBuffer;
 			}
-
 		}
-
 	} while (inputNumber != -2);
 		
 }
