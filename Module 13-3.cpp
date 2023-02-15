@@ -7,7 +7,7 @@
 При вводе «−1» с клавиатуры необходимо вывести всё содержимое хранилища (20 или менее элементов).
 При выводе элементы должны быть в том порядке, в котором они добавлялись.
 
-Попробуйте написать максимально оптимизированное решение этой задачи, 
+Попробуйте написать максимально оптимизированное решение этой задачи,
 чтобы совершалось как можно меньше расширений и перемещений элементов внутри вектора.
 
 Чтобы задать размера вектора равным 20, используйте:
@@ -16,18 +16,18 @@ std::vector<int> db(20);
 
 //                   ^ Задаём размер вектора при создании
 Пример выполнения:
-input number: 1 
-input number: 2 
-input number: 3 
-… 
-input number: 19 
-input number: 20 
-input number: -1 
-output: 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 
-input number: 21 
-input number: 22 
-input number: 23 
-input number: -1 
+input number: 1
+input number: 2
+input number: 3
+…
+input number: 19
+input number: 20
+input number: -1
+output: 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
+input number: 21
+input number: 22
+input number: 23
+input number: -1
 output: 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23
 
 Рекомендации по выполнению
@@ -43,19 +43,28 @@ output: 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23
 int main()
 {
 	std::vector<int> circularBuffer(20);
+	//инициализируем переменную указывающую на голову буффера
+	int headBuffer = 0;
+	//инициализируем длину буффера
+	int lengthBuffer = 0;
 
-
-	std::cout << "Input number: ";
 	int inputNumber = 0;
-	std::cin >> inputNumber;
 
-	int n = 0;
-	for (int i = 0; i < 100; ++i)
-	{
-		n = (n + 1) % 20;
-		std::cout << n << std::endl;
-	}
+	do {
+		std::cout << "Input number: ";
+		std::cin >> inputNumber;
+		if (inputNumber == -1) {
 
-	
+		}
+		else {
+			circularBuffer[headBuffer] = inputNumber;
+			headBuffer = ++headBuffer % 20;
+			if (lengthBuffer < 20) {
+				++lengthBuffer;
+			}
 
+		}
+
+	} while (inputNumber != -2);
+		
 }
